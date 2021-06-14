@@ -45,7 +45,7 @@ const plugins = [
 if (process.env.NODE_ENV === "production") {
   mode = "production";
   // Temporary workaround for 'browserslist' bug that is being patched in the near future
-  target = "browserslist";
+  // target = "browserslist";
 }
 
 // if (process.env.SERVE) {
