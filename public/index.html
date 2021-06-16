@@ -4,10 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <script src="https://mfe-showroom.netlify.app/remoteEntry.js" ></script>
-    <script src="https://mfe-orders.netlify.app/remoteEntry.js" ></script>
+    <!-- <script src="https://mfe-showroom.netlify.app/remoteEntry.js" ></script>
+    <script src="https://mfe-orders.netlify.app/remoteEntry.js" ></script> -->
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      const firstScript = window.location.hostname.includes("mfe-home.netlify") ? "https://mfe-showroom.netlify.app/remoteEntry.js" : "http://localhost:3001/remoteEntry.js";
+      const secondScript = window.location.hostname.includes("mfe-home.netlify") ? "https://mfe-orders.netlify.app/remoteEntry.js" : "http://localhost:3002/remoteEntry.js";
+      debugger;
+      var arr = [firstScript,secondScript ];
+      function addScript(val) {
+        const newScript = document.createElement("script");
+        newScript.src = val;
+        document.body.appendChild(newScript);
+      }
+      arr.forEach((val) => {
+        addScript(val);
+      });
+    </script>
   </body>
 </html>
