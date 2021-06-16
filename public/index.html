@@ -10,9 +10,8 @@
   <body>
     <div id="root"></div>
     <script>
-      const firstScript = window.location.hostname.includes("mfe-home.netlify") ? "https://mfe-showroom.netlify.app/remoteEntry.js" : "http://localhost:3001/remoteEntry.js";
-      const secondScript = window.location.hostname.includes("mfe-home.netlify") ? "https://mfe-orders.netlify.app/remoteEntry.js" : "http://localhost:3002/remoteEntry.js";
-      debugger;
+      const firstScript = window.location.hostname.includes("mfe-home.netlify") ? "https://mfe-showroom.netlify.app/remoteEntry.js" : "http://localhost:4001/remoteEntry.js";
+      const secondScript = window.location.hostname.includes("mfe-home.netlify") ? "https://mfe-orders.netlify.app/remoteEntry.js" : "http://localhost:4002/remoteEntry.js";
       var arr = [firstScript,secondScript ];
       function addScript(val) {
         const newScript = document.createElement("script");
