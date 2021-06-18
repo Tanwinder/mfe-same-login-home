@@ -8,6 +8,7 @@ import Login from './Login/Login'
 // }).catch((error) => {
 //     console.log(error)
 // }));
+import ErrorBoundary from './ErrorBoundries'
 import HomeSearchByItem from '../components/SearchByItem/SearchByItem'
 const SearchByItem = React.lazy(() => import('showroom/showroom'));
 const Orders = React.lazy(() => import('orders/orders'));
@@ -15,6 +16,7 @@ const Orders = React.lazy(() => import('orders/orders'));
 const App = () => {
     const history = useHistory();
     return(
+        <ErrorBoundary>
         <Suspense fallback={<h1><Button onClick={() => history.push('/searchbyitem')}>Home</Button></h1>}>
             <Switch>
                 <Route path="/" exact>
@@ -35,6 +37,7 @@ const App = () => {
                 </Route>
             </Switch>
         </Suspense>
+        </ErrorBoundary>
     )
 }
 
