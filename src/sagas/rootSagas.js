@@ -1,6 +1,6 @@
 import { all, fork } from 'redux-saga/effects';
 // import eventsSaga from './eventSaga';
-import LoginSaga from '../components/Login/loginSaga'
+import LoginSaga from '../components/Auth/loginSaga'
 import SearchByItem from '../components/SearchByItem/SearchByItemSaga'
 
 export default function* rootSaga() {

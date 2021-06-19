@@ -1,21 +1,26 @@
 const path = require("path");
+const childProcess = require('child_process');
 // const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const MiniCssExtractPlugin = require("./node_modules/mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("./node_modules/clean-webpack-plugin");
 const HtmlWebpackPlugin = require("./node_modules/html-webpack-plugin");
 const  ModuleFederationPlugin  =  require("webpack/lib/container/ModuleFederationPlugin");
+const webpack = require('webpack')
 
 const packageJson = require('./package.json');
 const deps = packageJson.dependencies;
 
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
+const {NODE_ENV, SHOWROOM_URL } = process.env;
+
+function getAppVersion() {
+const gh = childProcess.execSync('git rev-parse --short HEAD').toString();
+return `v-${packageJson.version}-${gh}`;
+}
 let mode = "development";   // development or production
 let target = "web";  // web or node
 const plugins = [
-  new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin(),
-  new HtmlWebpackPlugin({
-    template: "./public/index.html",
-  }),
   new  ModuleFederationPlugin({
     name: "home",
     library: {type: 'var', name : "home" },
@@ -39,6 +44,17 @@ const plugins = [
         eager: true
       }
     }
+  }),
+  new CleanWebpackPlugin(),
+  new MiniCssExtractPlugin(),
+  new HtmlWebpackPlugin({
+    template: "./public/index.html",
+    custom: process.env.NODE_ENV === "production" ? `<script src="https://mfe-showroom.netlify.app/remoteEntry.js"></script>` : `<script src="http://localhost:4001/remoteEntry.js" ></script>`
+  }),
+  new webpack.DefinePlugin({
+    APP_VERSION: JSON.stringify(getAppVersion().trim()),
+    NODE_ENV,
+    SHOWROOM_URL
   })
 ];
 

@@ -8,6 +8,16 @@
     }
     .nav-item {
       margin-right: 15px;
+      &.logout {
+        display: flex;
+        width: 200px;
+        justify-content: flex-end;
+        div {
+          margin-right: 10px;
+          color: chocolate;
+        }
+      }
+      
       & > a {
        text-decoration: none;
       }

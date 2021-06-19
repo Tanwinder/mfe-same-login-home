@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Link } from 'react-router-dom'
+import { useSelector} from 'react-redux'
 import './header.scss'
 import {
   Collapse,
@@ -13,12 +14,14 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText
+  NavbarText,
+  Button
 } from 'reactstrap';
 
 const Header = (props) => {
+  const {userInfo} = useSelector(state => state.user);
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log("NODE_ENV,SHOWROOM_URL", NODE_ENV && NODE_ENV, SHOWROOM_URL && SHOWROOM_URL )
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -39,8 +42,10 @@ const Header = (props) => {
             </NavItem>
           </Nav>
           <Nav>
-          <NavItem>
-              <Link to="/logout">Log Out</Link>
+          <NavItem className="logout">
+            <div>{APP_VERSION}</div>
+            { userInfo ? <div>{`${userInfo?.result?.firstName} ${userInfo?.result?.lastName}`}</div> : ""}
+              <Link to="/logout">{ userInfo ? 'Log Out' : 'Log In'}</Link>
           </NavItem>
           </Nav>
         </Collapse>

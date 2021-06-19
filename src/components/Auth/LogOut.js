@@ -6,13 +6,14 @@ import {useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import {signin, signup} from './LoginAction'
+import { LOG_OUT } from '../../actions/actionTypes'
 import './login.scss'
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 const Login = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    // const user = useSelector(state => state.user);
+    const user = useSelector(state => state.user);
     const [form, setForm] = useState(initialState);
     const [isSignUp, setisSignUp] = useState(false);
     const onSubmitCall = (e) => {
@@ -31,6 +32,7 @@ const Login = () => {
     const handleChange = (e) => {
         return setForm({ ...form, [e.target.name]: e.target.value })
     };
+    
     return(
         <div className="login">
             <Row>

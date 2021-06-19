@@ -1,7 +1,8 @@
 import React, {useEffect, Suspense} from 'react'
 import {Container, ButtonGroup, Button} from 'reactstrap'
+import {useSelector} from 'react-redux'
 import { Route, Switch, useHistory, Link } from 'react-router-dom'
-import Login from './Login/Login'
+import Login from './Auth/Login'
 
 // const SearchByItem = React.lazy(() => import('showroom/showroom').then(module => { 
 //     // return {default: module.Showroom };
@@ -10,11 +11,18 @@ import Login from './Login/Login'
 // }));
 import ErrorBoundary from './ErrorBoundries'
 import HomeSearchByItem from '../components/SearchByItem/SearchByItem'
+import SessionTimeout from './Auth/sessionTimeOut/sessionTimeOut'
 const SearchByItem = React.lazy(() => import('showroom/showroom'));
 const Orders = React.lazy(() => import('orders/orders'));
 
 const App = () => {
     const history = useHistory();
+    // const {userInfo} = useSelector(state => state.user);
+    // useEffect(() => {
+    //     if(!userInfo) {
+    //         history.push('/login')
+    //     }
+    // }, [userInfo])
     return(
         <ErrorBoundary>
         <Suspense fallback={<h1><Button onClick={() => history.push('/searchbyitem')}>Home</Button></h1>}>
@@ -37,6 +45,7 @@ const App = () => {
                 </Route>
             </Switch>
         </Suspense>
+        <SessionTimeout/>
         </ErrorBoundary>
     )
 }
