@@ -5,7 +5,7 @@ import { baseUrl } from './api.config';
 export async function Api(url, options, token) {
 
     const instance = axios.create({
-        baseURL: baseUrl,
+        baseURL: baseUrl(),
         timeout: 5000
     });
     instance.interceptors.request.use((req) => {
