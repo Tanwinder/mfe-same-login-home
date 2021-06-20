@@ -5,6 +5,6 @@ export const baseUrl = () => {
         case 'development':
             return 'http://localhost:5000';
         default:
-            return 'http://localhost:5000';
+            return 'https://mfes-login-services.herokuapp.com';
     }
 }

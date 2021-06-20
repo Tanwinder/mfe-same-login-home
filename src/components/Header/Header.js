@@ -21,7 +21,7 @@ import {
 const Header = (props) => {
   const {userInfo} = useSelector(state => state.user);
   const [isOpen, setIsOpen] = useState(false);
-  console.log("NODE_ENV,SHOWROOM_URL", NODE_ENV && NODE_ENV, SHOWROOM_URL && SHOWROOM_URL )
+  console.log(process.env.NODE_ENV, "NODE_ENV,SHOWROOM_URL", NODE_ENV && NODE_ENV, SHOWROOM_URL && SHOWROOM_URL )
   const toggle = () => setIsOpen(!isOpen);
 
   return (
