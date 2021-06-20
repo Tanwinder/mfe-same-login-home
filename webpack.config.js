@@ -18,7 +18,7 @@ function getAppVersion() {
 const gh = childProcess.execSync('git rev-parse --short HEAD').toString();
 return `v-${packageJson.version}-${gh}`;
 }
-let mode = "development";   // development or production
+let mode = NODE_ENV;   // development or production
 let target = "web";  // web or node
 const plugins = [
   new  ModuleFederationPlugin({
