@@ -53,7 +53,7 @@ const plugins = [
   }),
   new webpack.DefinePlugin({
     APP_VERSION: JSON.stringify(getAppVersion().trim()),
-    NODE_ENV,
+    // NODE_ENV,
     SHOWROOM_URL
   })
 ];

@@ -7,11 +7,12 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "NODE_ENV=production webpack serve",
+    "start": "NODE_ENV=development webpack serve --mode development",
     "watch": "webpack --watch",
     "build-dev": "webpack --mode development",
-    "build": "NODE_ENV=production webpack",
-    "clean": "rm -rf dist"
+    "build": "npm run clean && NODE_ENV=production webpack",
+    "clean": "rm -rf dist",
+    "server": "node ./server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",

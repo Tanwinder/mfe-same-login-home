@@ -21,7 +21,7 @@ import {
 const Header = (props) => {
   const {userInfo} = useSelector(state => state.user);
   const [isOpen, setIsOpen] = useState(false);
-  console.log(process.env.NODE_ENV, "NODE_ENV,SHOWROOM_URL", NODE_ENV && NODE_ENV, SHOWROOM_URL && SHOWROOM_URL )
+  // console.log(process.env.NODE_ENV, "NODE_ENV,SHOWROOM_URL", NODE_ENV && NODE_ENV, SHOWROOM_URL && SHOWROOM_URL )
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -43,7 +43,7 @@ const Header = (props) => {
           </Nav>
           <Nav>
           <NavItem className="logout">
-            <div>{APP_VERSION}</div>
+            <div>{APP_VERSION && APP_VERSION}</div>
             { userInfo ? <div>{`${userInfo?.result?.firstName} ${userInfo?.result?.lastName}`}</div> : ""}
               <Link to="/logout">{ userInfo ? 'Log Out' : 'Log In'}</Link>
           </NavItem>
