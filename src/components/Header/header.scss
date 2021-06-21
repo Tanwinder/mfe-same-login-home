@@ -10,7 +10,7 @@
       margin-right: 15px;
       &.logout {
         display: flex;
-        width: 200px;
+        min-width: 200px;
         justify-content: flex-end;
         div {
           margin-right: 10px;

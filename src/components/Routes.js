@@ -22,13 +22,15 @@ const App = () => {
     //     if(!userInfo) {
     //         history.push('/login')
     //     }
-    // }, [userInfo])
+    // })
     return(
         <ErrorBoundary>
         <Suspense fallback={<h1><Button onClick={() => history.push('/searchbyitem')}>Home</Button></h1>}>
             <Switch>
                 <Route path="/" exact>
                     <div> Home </div>
+                    <div>
+                        <a href={process.env.NODE_ENV === 'production' ? 'https://cross-domain-showroom.netlify.app/' : "http://localhost:9000/"}>cross-domai-showroom</a></div>
                     <HomeSearchByItem />
                 </Route>
                 <Route path="/showroom" >
