@@ -9,16 +9,17 @@ import {signin} from '../components/Auth/LoginAction'
 
 import {envVariables} from "../utils/envVariables"
 
-
+const hjk = envVariables();
+const hjkRemote = envVariables("REMOTE");
 // cross domain localstorage share
 var createHost = require("cross-domain-storage/host");
 var storageHost = createHost([
   {
-    origin: envVariables(),
+    origin: hjk,
     allowedMethods: ["get", "set", "remove"],
   },
   {
-    origin: envVariables("REMOTE"),
+    origin: hjkRemote,
     allowedMethods: ["get", "set", "remove"],
   },
 ]);

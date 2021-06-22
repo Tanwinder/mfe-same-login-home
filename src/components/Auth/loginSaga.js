@@ -6,8 +6,11 @@ var createGuest = require("cross-domain-storage/guest");
 
 import {envVariables} from "../../utils/envVariables"
 
+// const hjk = envVariables();
+const hjkRemote = envVariables("REMOTE");
+
 function accessGuest(profile) {
-    var bazStorage = createGuest(envVariables("REMOTE"));
+    var bazStorage = createGuest(hjkRemote);
     bazStorage.set("profile", profile, function (error, data) {
       // value for the key of 'fizz' will be retrieved from localStorage on www.baz.com
       if(error){
