@@ -1,7 +1,7 @@
 
 import {AUTH_RESULT, LOG_OUT_USER} from '../../actions/actionTypes';
 const initialState = {
-    userInfo: sessionStorage.getItem('profile') ? JSON.parse(sessionStorage.getItem('profile')) : null
+    userInfo: null
 }
 export default (state= initialState, action) => {
     switch(action.type) {
@@ -11,7 +11,7 @@ export default (state= initialState, action) => {
                 userInfo: action.payload
             };
         case LOG_OUT_USER:
-            sessionStorage.removeItem('profile');
+            // sessionStorage.removeItem('profile');
             localStorage.removeItem('profile');
             return {
                 userInfo: null
